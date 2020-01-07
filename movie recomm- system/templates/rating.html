@@ -1,0 +1,91 @@
+{% extends 'layout.html'%}
+#wrapper{
+     width: 980px;
+     margin: 0 auto;
+{% block title%} rating {% endblock%}
+{% block content%}
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<div  class = "row" >
+<div  class = "col-md-6 col-md-offset-3" >
+{% if session ['name']%}
+   <div class="container">
+     <b> Welcome  {{session ['name']}}</b>
+   </div>
+{% else%}
+Not login
+{% endif%}
+</div ></div ></div >
+<div class="container">
+    <h1 class="form-heading"><center> <font color="#c53211"><b><font size="6"> Movie Recommendation System </font></b></font></center></h1>
+    <!--<center>  <img src="static/banner.jpg" height="150px" width="100%"></center>-->
+    <!--<br>-->
+<!--<a href="{{ url_for('detail') }} "> <button type="btn" class="btn btn-primary" >USER DETAIL </button></a>-->
+    <!--<a href="{{ url_for('movie') }}">   <button type="btn" class="btn btn-primary" >PESONAL INTEREST</button></a>-->
+</div>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Rating </title>
+     <link rel = "stylesheet" type = "text/css" href="{{ url_for('static',filename='style.css')}}">
+
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+</head>
+<body background="static/back.jpg">
+<form name="rate" action="/review_submit" method="post">
+<div class="container" >
+<!--<h1> <center> <font color="red" > Please Rate this movie </font></center> </h1>-->
+    </br></br>
+
+<div class="container" style="float:left; width:30%;">
+    <h1><font color="#c53211"> <b>Rate This Movie</b> </font> </h1>
+<fieldset class="rating"  center >
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+</fieldset>
+</br></br></br></br>
+
+    <h3><center>Give review</center></h3></br>
+    <textarea rows="3" cols="40" name="filed"></textarea></br></br>
+
+        <!--<input type="text" name="mail" id="mail" class="form-control"  placeholder="Plz Enter Email Id"></center>-->
+
+    <center> <input type="submit" class="btn btn-primary " value="Submit" style="width:120px;  height:40px"> </a></center>
+
+
+
+</div>
+
+<div id="right_side" class="right_side" style="float:center; margin-top :0px; margin-left:500px;">
+    <h2><b> <u><font color="white"> Movie Details  </font></u> </b>   </h2>
+    <br>
+    <h4> Movie id : <b>{{m[0]}} </b></h4><br>
+    <h4> Movie Name: <b> {{m[1]}} </b> </h4><br>
+    <h4> Genres :<b> {{m[2]}} </b></h4><br>
+
+    <center> <img src="static/{{ m[3] }}" style="margin-left:300px;margin-top:-220px"> </center>
+
+
+</div>
+
+</div>
+
+
+</form>
+{% endblock %}
+
+</body>
+</html>

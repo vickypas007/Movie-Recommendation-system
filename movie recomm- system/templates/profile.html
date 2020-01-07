@@ -1,0 +1,125 @@
+
+{% extends 'layout.html'%}
+
+{% block title%} profile {% endblock%}
+{% block content%}
+<div  class = "container" >
+<div  class = "row" >
+<div  class = "col-md-6 col-md-offset-3" >
+{% if session ['name']%}
+   <div class="container">
+     <b> Welcome  {{session ['name']}}</b>
+   </div>
+{% else%}
+Not login
+{% endif%}
+</div ></div ></div >
+
+<html>
+<head>
+    <style>
+       body {
+  font-family: helvetica;
+  background: #eee;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+form {
+  margin-top: 2em;
+}
+
+.hide {
+  position: absolute;
+  left: -10000px;
+}
+
+label {
+  display: inline-block;
+  background: gray;
+  margin: 25px;
+  position: relative;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 2px;
+  font-size: 1em;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+#happy ~ .option-happy {
+  cursor: url("static/emoji/happy.png"), auto;background: green;
+}
+#happy:checked ~ .option-happy {
+  background: green;
+}
+
+#sad ~ .option-sad {
+  cursor: url("static/emoji/sad.png"), auto;background: red;
+}
+#sad:checked ~ .option-sad {
+  background: red;
+}
+
+#meh ~ .option-meh {
+  cursor: url("static/emoji/meh.png"), auto;background: orange;
+}
+#meh:checked ~ .option-meh {
+  background: orange;
+}
+#mood ~ .option-mood {
+  cursor: url("static/emoji/rom.png"), auto; background: blue;
+}
+#mood:checked ~ .option-mood {
+  background: blue;
+  }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="form-heading"><center> <font color="#c53211">Movie Recommendation System </font></center></h1>
+    <center>  <img src="static/banner.jpg" height="240px" width="100%"></center>
+    <br>
+<a href="{{ url_for('detail') }} "> <button type="btn" class="btn btn-primary" >USER DETAIL </button></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{{ url_for('movie') }}">  <button type="btn" class="btn btn-primary" >PESONAL INTEREST</button></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+     <a href="{{ url_for('recommend') }}">  <button type="btn" class="btn btn-primary" >RECOMMENDED MOVIE</button></a>
+
+    <br/><br>
+
+    <!--<img src="static/emoji/comedy.gif" height="120px" width="130px" style="cursor: pointer;" title="Comedy Movie"> &nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<img src="static/emoji/love.gif" height="120px" width="130px"  style="cursor: pointer; " title="Love  Movie "> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<img src="static/emoji/fear.gif" height="100px" width="110px"  style="cursor: pointer; " title="Scary  Movie"> &nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<img src="static/emoji/musical.gif" height="120px" width="130px"  style="cursor: pointer; " title="Thriller  Movie"> &nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<img src="static/emoji/sad.gif" height="120px" width="130px" style="cursor: pointer; " title=" Drama  Movie"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;-->
+    <!--<img src="static/emoji/romentic.gif" height="120px" width="130px"  style="cursor: pointer; " title="Romentic  Movie">-->
+    <form >
+  <h1>How are you feeling today?</h1>
+   <a href="{{ url_for('happy') }}">   <input class="hide" type="button" title="Happy" name="happy" id="happy" value="happy"  >
+       <label for="happy" class="option-happy">Happy</label></a>
+
+  <a href="{{ url_for('sad') }}"> <input class="hide" type="button" title="Sad" name="sad" id="sad" value="sad">
+      <label for="sad" class="option-sad">Sad</label></a>
+
+  <a href="{{ url_for('action') }}">  <input class="hide" type="button" title="Fear" name="meh" id="meh" value="meh">
+      <label for="meh" class="option-meh">Fear</label></a>
+
+  <a href="{{ url_for('rom') }}"> <input class="hide" type="button" title="Romentic " name="mood" id="mood" value="rom">
+      <label for="mood" class="option-mood">Romentic </label></a>
+
+</form>
+
+</div>
+
+
+</body>
+{% endblock%}
+</html>
+

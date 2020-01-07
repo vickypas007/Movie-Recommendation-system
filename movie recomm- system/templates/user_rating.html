@@ -1,0 +1,139 @@
+{% extends 'layout.html'%}
+#wrapper{
+     width: 980px;
+     margin: 0 auto;
+{% block title%} Movie {% endblock%}
+{% block content%}
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<div  class = "row" >
+<div  class = "col-md-6 col-md-offset-3" >
+{% if session ['name']%}
+   <div class="container">
+     <b> Welcome  {{session ['name']}}</b>
+   </div>
+{% else%}
+Not login
+{% endif%}
+</div ></div ></div >
+<div class="container">
+    <h1 class="form-heading"><center> <font color="#c53211">Movie Recommendation System </font></center></h1>
+    <center>  <img src="static/banner.jpg" height="150px" width="100%"></center>
+    <!--<br>-->
+<!--<a href="{{ url_for('detail') }} "> <button type="btn" class="btn btn-primary" >USER DETAIL </button></a>-->
+    <!--<a href="{{ url_for('movie') }}">   <button type="btn" class="btn btn-primary" >PESONAL INTEREST</button></a>-->
+<!--</div>-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Movie</title>
+
+          <style>
+    table.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table.blueTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+
+    </style>
+
+</head>
+<body background="static/back.jpg">
+
+<div class="container">
+    <h1> <center> <font color="#0000" >Your Interested Movie List </font>
+    </center></h1></div>
+
+<!--<h1> Movie List Based On your Rating-</h1>-->
+<table class="blueTable" border="2" cellpadding="5"  align="right" style="width:300px;" >
+    <tr>
+        <th style='text-align:center;vertical-align:middle'> MOVIE TITLE </th>
+        <th style='text-align:center;vertical-align:middle'height="10"> RATING </th>
+        </tr>
+    {% for user in m %}
+    <tr>
+       <td style='text-align:center;vertical-align:middle'>  {{user[0]}}</td>
+        <td style='text-align:center;vertical-align:middle'>  {{user[1]}}</td>
+    </tr>
+        {% endfor %}
+    </table>
+<h1> Movie Reviewed By You-</h1>
+<table class="blueTable" border="2" cellpadding="5"  align="left" style="width:600px;" >
+    <tr>
+        <th style='text-align:center;vertical-align:middle'> USER ID </th>
+        <th style='text-align:center;vertical-align:middle'height="10"> MOVIE ID </th>
+        <th style='text-align:center;vertical-align:middle'height="10"> RATING </th>
+        <th style='text-align:center;vertical-align:middle'height="10"> DATE </th>
+        <th style='text-align:center;vertical-align:middle'height="10"> YOUR REVIEW</th>
+        </tr>
+    {% for user in l %}
+    <tr>
+       <td style='text-align:center;vertical-align:middle'>  {{user[0]}}</td>
+        <td style='text-align:center;vertical-align:middle'>  {{user[1]}}</td>
+        <td style='text-align:center;vertical-align:middle'>  {{user[2]}}</td>
+        <td style='text-align:center;vertical-align:middle'>  {{user[3]}}</td>
+        <td style='text-align:center;vertical-align:middle'>  {{user[4]}}</td>
+    </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+</body>
+</html>
